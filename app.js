@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
 const axios = require('axios');
+require('dotenv').config();
 
 // Set up body parsing middleware
 app.use(express.urlencoded({ extended: false }));
@@ -14,10 +15,10 @@ app.get('/', (req, res) => {
 
 // Handle form submission
 app.post('/send-email', (req, res) => {
-  const { name, email, phone, message } = req.body;
-  const chatId = '@sophiathepromoter';
-  const botToken = '6031687053:AAEzZ1dy3Z0Lxg4tl0VXm0a9NT2HJ_vpGog';
-  const text = `New contact form submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+  const { name, email, message } = req.body;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const text = `New contact form submission:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
 
   // Send message to Telegram bot
   axios
@@ -36,14 +37,14 @@ app.post('/send-email', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'jd4946469@gmail.com',
-      pass: 'nbtfuecckhgcltib',
+      user: process.env.EMAIL_ADDRESS,
+      pass: process.env.EMAIL_PASSWORD,
     },
   });
 
   // Prepare the email message
   const mailOptions = {
-    from: 'jd4946469@gmail.com',
+    from: process.env.EMAIL_ADDRESS,
     to: email,
     subject: 'Thank You for Contacting Us',
     text: `Dear ${name},\n\nThank you for contacting us. We appreciate your message.\n\nBest regards,\nYour Company`,
@@ -60,7 +61,7 @@ app.post('/send-email', (req, res) => {
 
   // Prepare the email message for the thank you message
   const thankYouMailOptions = {
-    from: 'jd4946469@gmail.com',
+    from: process.env.EMAIL_ADDRESS,
     to: email,
     subject: 'Thank You for Contacting Us',
     text: `Dear ${name},\n\nThank you for contacting us. We appreciate your message and will get back to you shortly.\n\nBest regards,\nYour Company`,
