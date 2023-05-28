@@ -1,0 +1,17 @@
+{
+  "name": "myrender",
+  "version": "1.0.0",
+  "description": "formcontactrender",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.2",
+    "axios": "^1.4.0"
+  },
+  "author": "myrender",
+  "license": "MIT"
+}
+
