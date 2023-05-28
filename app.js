@@ -46,7 +46,7 @@ app.post('/send-email', (req, res) => {
     from: 'jd4946469@gmail.com',
     to: email,
     subject: 'Thank You for Contacting Us',
-    text: `Dear ${name},\n\nThank you for contacting us. We appreciate your message: ${message}.\n\nBest regards,\nYour Company`,
+    text: `Dear ${name},\n\nThank you for contacting us. We appreciate your message: \n\nBest regards,\nYour Company`,
   };
 
   // Send the email to the user
