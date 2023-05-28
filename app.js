@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 
 // Handle form submission
 app.post('/send-email', (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, phone, message } = req.body;
   const chatId = '@sophiathepromoter';
-  const botToken = '6031687053:AAEzZ1dy3Z0Lxg4tl0VXm0a9NT2HJ_vpGog'; 
-  const text = `New contact form submission:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+  const botToken = '6031687053:AAEzZ1dy3Z0Lxg4tl0VXm0a9NT2HJ_vpGog';
+  const text = `New contact form submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
 
   // Send message to Telegram bot
   axios
@@ -46,7 +46,7 @@ app.post('/send-email', (req, res) => {
     from: 'jd4946469@gmail.com',
     to: email,
     subject: 'Thank You for Contacting Us',
-    text: `Dear ${name},\n\nThank you for contacting us. We appreciate your message: \n\nBest regards,\nYour Company`,
+    text: `Dear ${name},\n\nThank you for contacting us. We appreciate your message.\n\nBest regards,\nYour Company`,
   };
 
   // Send the email to the user
