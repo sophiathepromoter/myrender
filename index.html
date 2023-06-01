@@ -5,31 +5,26 @@
 </head>
 <body>
   <h1>Contact Us</h1>
-  <div id="formContainer">
-    <form id="contactForm" action="https://myrender-8cmk.onrender.com/send-email" method="post" onsubmit="showSubmitMessage(event)">
-      <label for="name">Name:</label><br>
-      <input type="text" id="name" name="name" required><br><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" required><br><br>
-      <label for="message">Message:</label><br>
-      <textarea id="message" name="message" required></textarea><br><br>
-      <input type="submit" value="Submit">
-    </form>
-    <div id="submitMessage" style="display: none;">
-      <p>Please wait, your form is submitting...</p>
-    </div>
+  <form id="contactForm" action="https://myrender-8cmk.onrender.com/send-email" method="post" onsubmit="showSubmitMessage()">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    <label for="phone">Phone:</label><br>
+    <input type="tel" id="phone" name="phone" required><br><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" required></textarea><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="submitMessage" style="display: none;">
+    <p>Please wait, your form is submitting...</p>
   </div>
 
   <script>
-    function showSubmitMessage(event) {
-      event.preventDefault(); // Prevent form submission
-      document.getElementById('formContainer').style.display = 'none';
+    function showSubmitMessage() {
+      document.getElementById('contactForm').style.display = 'none';
       document.getElementById('submitMessage').style.display = 'block';
-
-      // Submit the form after a delay (to simulate processing)
-      setTimeout(function () {
-        document.getElementById('contactForm').submit();
-      }, 2000);
     }
   </script>
 </body>
