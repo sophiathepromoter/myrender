@@ -2,6 +2,15 @@
 <html>
 <head>
   <title>Contact Form</title>
+  <style>
+    .countdown-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-size: 48px;
+    }
+  </style>
 </head>
 <body>
   <h1>Contact Us</h1>
@@ -21,8 +30,8 @@
     <p>Please wait, your form is submitting...</p>
   </div>
 
-  <div id="successMessage" style="display: none;">
-    <p>Form submitted successfully!</p>
+  <div id="countdownContainer" class="countdown-container" style="display: none;">
+    <div id="countdown">2</div>
   </div>
 
   <script>
@@ -34,12 +43,6 @@
 
     function submitForm() {
       document.getElementById('contactForm').submit();
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const success = urlParams.get('success');
-    if (success) {
-      document.getElementById('successMessage').style.display = 'block';
     }
   </script>
 </body>
