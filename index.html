@@ -16,5 +16,16 @@
     <textarea id="message" name="message" required></textarea><br><br>
     <input type="submit" value="Submit">
   </form>
+  
+  <div id="submitMessage" style="display: none;">
+    <p>Please wait, your form is submitting...</p>
+  </div>
+
+  <script>
+    function showSubmitMessage() {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('submitMessage').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
