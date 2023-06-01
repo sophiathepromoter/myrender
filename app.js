@@ -79,7 +79,7 @@ app.post('/send-email', (req, res) => {
   setTimeout(() => {
     res.send(`
       <script>
-        window.location.href = '/';
+        window.location.href = 'index.html';
       </script>
     `);
   }, 2000);
