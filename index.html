@@ -1,60 +1,36 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
   <title>Contact Form</title>
 </head>
 <body>
   <h1>Contact Us</h1>
-  <form action="https://myrender-8cmk.onrender.com/send-email" method="post">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br><br> 
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
-    <label for="phone">Phone:</label><br>
-    <input type="tel" id="phone" name="phone" required><br><br>
-    <label for="message">Message:</label><br>
-    <textarea id="message" name="message" required></textarea><br><br>
-    <input type="submit" value="Submit">
-    <p id="errorMessage" class="submitting-message"></p>
-    <p id="successMessage" class="submitting-message"></p>
-  </form>
-  
-  
+  <div id="formContainer">
+    <form id="contactForm" action="/send-email" method="post" onsubmit="showSubmitMessage(event)">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" required></textarea><br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <div id="submitMessage" style="display: none;">
+      <p>Please wait, your form is submitting...</p>
+    </div>
+  </div>
+
   <script>
-       var pleaseWaitMessage = 'Please wait... Your form is submitting.';
-    var errorMessageElement = document.getElementById('errorMessage');
-    errorMessageElement.innerText = pleaseWaitMessage;
-    errorMessageElement.style.display = 'block';
+    function showSubmitMessage(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('submitMessage').style.display = 'block';
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        // Hide the "Please wait" message
-        errorMessageElement.style.display = 'none';
-
-        // Display success message
-        var successMessageElement = document.getElementById('successMessage');
-        successMessageElement.innerText = 'Form submitted successfully!';
-        successMessageElement.style.color = '#00FF00'; // Replace with your desired color
-      } else {
-        // Display error message
-        var errorMessage;
-        if (xhr.status === 401) {
-          errorMessage = 'Unauthorized: Invalid bot token.';
-        } else if (xhr.status === 403) {
-          errorMessage = 'Forbidden: The bot is not allowed to send messages to the specified chat.';
-        } else if (xhr.status === 404) {
-          errorMessage = 'Chat not found: The specified chat ID is invalid or the bot is not a member of the chat.';
-        } else {
-          errorMessage = 'An error occurred. Please try again later.';
-        }
-        errorMessageElement.innerText = errorMessage;
-        errorMessageElement.style.color = '#FF0000'; // Replace with your desired color
-      }
-    };
-    xhr.send();
-  }
+      // Submit the form after a delay (to simulate processing)
+      setTimeout(function () {
+        document.getElementById('contactForm').submit();
+      }, 2000);
+    }
   </script>
 </body>
 </html>
