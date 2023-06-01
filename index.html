@@ -30,6 +30,11 @@
 
     function submitForm() {
       document.getElementById('contactForm').submit();
+      setTimeout(showSuccessMessage, 1000);
+    }
+
+    function showSuccessMessage() {
+      document.getElementById('submitMessage').innerHTML = 'Form submitted successfully!';
     }
   </script>
 </body>
