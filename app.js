@@ -76,7 +76,13 @@ app.post('/send-email', (req, res) => {
     }
   });
 
-  res.redirect('/thank-you.html');
+  setTimeout(() => {
+    res.send(`
+      <script>
+        window.location.href = '/';
+      </script>
+    `);
+  }, 2000);
 });
 
 // Start the server
@@ -84,4 +90,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
-
