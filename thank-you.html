@@ -1,10 +1,38 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Contact Form</title>
+  <title>Thank You</title>
+  <style>
+    .countdown-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-size: 48px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Contact Us</h1>
-  <p>Thank YOU</p>
+  <div id="countdownContainer" class="countdown-container">
+    <div id="countdown">2</div>
+  </div>
+
+  <script>
+    const countdownElement = document.getElementById('countdown');
+    let countdown = 2;
+
+    function updateCountdown() {
+      countdown--;
+      countdownElement.innerText = countdown;
+
+      if (countdown === 0) {
+        window.location.href = '/';
+      } else {
+        setTimeout(updateCountdown, 1000);
+      }
+    }
+
+    updateCountdown();
+  </script>
 </body>
 </html>
