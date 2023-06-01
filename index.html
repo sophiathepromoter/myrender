@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1>Contact Us</h1>
-  <form id="contactForm" action="https://myrender-8cmk.onrender.com/send-email" method="post" onsubmit="showSubmitMessage(event)">
+  <form id="contactForm" action="/send-email" method="post" onsubmit="showSubmitMessage(event)">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required><br><br>
     <label for="email">Email:</label><br>
@@ -19,6 +19,10 @@
 
   <div id="submitMessage" style="display: none;">
     <p>Please wait, your form is submitting...</p>
+  </div>
+
+  <div id="successMessage" style="display: none;">
+    <p>Form submitted successfully!</p>
   </div>
 
   <script>
@@ -35,7 +39,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const success = urlParams.get('success');
     if (success) {
-      document.getElementById('submitMessage').innerHTML = 'Form submitted successfully!';
+      document.getElementById('successMessage').style.display = 'block';
     }
   </script>
 </body>
