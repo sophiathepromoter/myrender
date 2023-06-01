@@ -76,7 +76,7 @@ app.post('/send-email', (req, res) => {
     }
   });
 
-  res.send('Thank you for contacting us. We will get back to you shortly.');
+  res.redirect('/?success=true');
 });
 
 // Start the server
@@ -84,4 +84,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
-
