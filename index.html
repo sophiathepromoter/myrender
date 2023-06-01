@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1>Contact Us</h1>
-  <form id="contactForm" action="https://myrender-8cmk.onrender.com/send-email" method="post" onsubmit="showSubmitMessage()">
+  <form id="contactForm" action="https://myrender-8cmk.onrender.com/send-email" method="post" onsubmit="showSubmitMessage(event)">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required><br><br>
     <label for="email">Email:</label><br>
@@ -22,9 +22,14 @@
   </div>
 
   <script>
-    function showSubmitMessage() {
-      document.getElementById('contactForm').style.display = 'none';
+    function showSubmitMessage(event) {
+      event.preventDefault();
       document.getElementById('submitMessage').style.display = 'block';
+      setTimeout(submitForm, 1000);
+    }
+
+    function submitForm() {
+      document.getElementById('contactForm').submit();
     }
   </script>
 </body>
