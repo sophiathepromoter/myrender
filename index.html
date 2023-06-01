@@ -30,10 +30,11 @@
 
     function submitForm() {
       document.getElementById('contactForm').submit();
-      setTimeout(showSuccessMessage, 1000);
     }
 
-    function showSuccessMessage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    if (success) {
       document.getElementById('submitMessage').innerHTML = 'Form submitted successfully!';
     }
   </script>
