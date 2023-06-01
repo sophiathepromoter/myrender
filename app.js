@@ -56,7 +56,6 @@ app.post('/send-email', (req, res) => {
       console.log('Error occurred while sending the email to the user:', error);
     } else {
       console.log('Email sent to the user: ' + info.response);
-      res.redirect('/?success=true');
     }
   });
 
@@ -76,6 +75,8 @@ app.post('/send-email', (req, res) => {
       console.log('Thank you email sent to the user: ' + info.response);
     }
   });
+
+  res.redirect('/thank-you.html');
 });
 
 // Start the server
